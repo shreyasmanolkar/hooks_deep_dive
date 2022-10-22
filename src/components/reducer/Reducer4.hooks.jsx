@@ -1,51 +1,24 @@
-import React, { useRef, useState } from "react";
+import React, { useReducer, useRef } from "react";
+import { formReducer, INITIAL_STATE } from "./formReducer";
 
-function Reducer2(){
+function Reducer4(){
 
-    const [product, setProduct] = useState({
-        title: "",
-        desc: "",
-        price: 0,
-        category: "",
-        tags: [],
-        images: {
-            sm: "",
-            md: "",
-            lg: ""
-        },
-        quantity: 0
-    });
+    const [state, dispatch] = useReducer(formReducer, INITIAL_STATE);
+
+    const tagRef = useRef();
 
     const handleChange = (e) => {
-        setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value}));
+        dispatch({type: "CHANGE_INPUT", payload: {name: e.target.name, value: e.target.value}});
     };
-    
-    const tagRef = useRef();
 
     const handleTags = () => {
         const tags = tagRef.current.value.split(",");
-        tags.forEach((tag)=>{
-            setProduct((prev) => ({...prev, tags: [...prev.tags, tag]}));
-        });
-    };
+        tags.forEach(tag => {
+            dispatch({ type: "ADD_TAG", payload: tag })
+        })
+    }
 
-    const handleRemoveTag = (tag) => {
-        setProduct((prev) => ({
-            ...prev,
-            tags: prev.tags.filter((t) => t !== tag)
-        }));
-    };
-
-    const handleIncrease = () => {
-        setProduct((prev) => ({...prev, quantity: prev.quantity + 1}));
-    };
-
-    const handleDecrease = () => {
-        setProduct((prev) => ({
-            ...prev,
-            quantity: prev.quantity - 1
-        }));
-    };
+    console.log(state);
 
     return(
         <div>
@@ -71,8 +44,8 @@ function Reducer2(){
                 
                 <div className="tags">
                     {
-                        product.tags.map((tag) => (
-                            <small key={tag} onClick={()=> handleRemoveTag(tag)}>
+                        state.tags.map((tag) => (
+                            <small key={tag} onClick={() => dispatch({type: "REMOVE_TAG", payload: tag})}>
                                 {tag}
                             </small>
                         ))
@@ -80,9 +53,9 @@ function Reducer2(){
                 </div><br /><br />
                 
                 <div className="quantity">
-                    <button type="button" onClick={handleDecrease}>-</button>
-                    <span>Quantity({product.quantity})</span>
-                    <button type="button" onClick={handleIncrease}>+</button>
+                    <button type="button" onClick={() => dispatch({type: "DECREASE"})}>-</button>
+                    <span>Quantity({state.quantity})</span>
+                    <button type="button" onClick={() => dispatch({type: "INCREASE"})}>+</button>
                 </div>
                 
             </form>
@@ -90,4 +63,4 @@ function Reducer2(){
     )
 }
 
-export default Reducer2;
+export default Reducer4;
