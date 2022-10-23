@@ -13,7 +13,10 @@
 // import Reducer3 from "./components/reducer/Reducer3.hooks";
 // import Reducer4 from "./components/reducer/Reducer4.hooks";
 // import ThreeButton from "./components/ThreeButtons.component";
-import ReducerThreeButton from "./components/ReducerThreeButtons.component";
+// import ReducerThreeButton from "./components/ReducerThreeButtons.component";
+// import Clock from "./components/Clock.component";
+// import Ref from "./hooks/ref/Ref.hooks";
+import Ref2 from "./hooks/ref/Ref2.hooks";
 
 
 function App() {
@@ -35,7 +38,10 @@ function App() {
       {/* <Reducer3/> */}
       {/* <Reducer4/> */}
       {/* <ThreeButton/> */}
-      <ReducerThreeButton/>
+      {/* <ReducerThreeButton/> */}
+      {/* <Clock/> */}
+      {/* <Ref/> */}
+      <Ref2/>
     </div>
   );
 }
