@@ -16,7 +16,11 @@
 // import ReducerThreeButton from "./components/ReducerThreeButtons.component";
 // import Clock from "./components/Clock.component";
 // import Ref from "./hooks/ref/Ref.hooks";
-import Ref2 from "./hooks/ref/Ref2.hooks";
+// import Ref2 from "./hooks/ref/Ref2.hooks";
+// import Context from "./hooks/context/Context.hooks";
+// import Context2 from "./hooks/context/Context2.hook";
+// import Memo from "./hooks/memo/memo.hooks";
+import CallBack from "./hooks/callBack/CallBack.hooks";
 
 
 function App() {
@@ -41,7 +45,11 @@ function App() {
       {/* <ReducerThreeButton/> */}
       {/* <Clock/> */}
       {/* <Ref/> */}
-      <Ref2/>
+      {/* <Ref2/> */}
+      {/* <Context/> */}
+      {/* <Context2/> */}
+      {/* <Memo/> */}
+      <CallBack/> 
     </div>
   );
 }
